@@ -21,7 +21,7 @@ def travellingSalesmanProblem(graph, s):
             path.append(j + 1)
             current_pathweight += graph[k][j]
             k = j
-        path.append(j + 1)
+        path.append(s + 1)
         current_pathweight += graph[k][s]
         print(f"{path} : {current_pathweight}")
         if current_pathweight < min_path:
