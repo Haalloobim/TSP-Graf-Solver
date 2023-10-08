@@ -11,20 +11,24 @@ def travellingSalesmanProblem(graph, s):
             vertex.append(i)
 
     min_path = maxsize
+    out_path = []
     next_permutation = permutations(vertex)
     for i in next_permutation:
-        print(i)
         current_pathweight = 0
-
+        path = []
         k = s
+        path.append(k + 1)
         for j in i:
+            path.append(j + 1)
             current_pathweight += graph[k][j]
             k = j
+        path.append(j + 1)
         current_pathweight += graph[k][s]
-
+        print(f"{path} : {current_pathweight}")
+        if current_pathweight < min_path:
+            out_path = path
         min_path = min(min_path, current_pathweight)
-
-    return min_path
+    print(f"\nMinimum TSP : \n{out_path} : {min_path}")
 
 
 if __name__ == "__main__":
@@ -38,4 +42,4 @@ if __name__ == "__main__":
         [56, 70, 78, 57, 21, 0]
     ]
     s = 0
-    print(travellingSalesmanProblem(graph, s))
+    travellingSalesmanProblem(graph, s)
